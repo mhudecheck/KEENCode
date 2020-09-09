@@ -1,2 +1,3 @@
-# KEEN Paper Development Workshop
-Public R code for the KEEN Paper Development Workshop (16 June 2020)
+# KEEN Literature Review Workshop
+Public R code for KEEN Literature Review Workshop
+

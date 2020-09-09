@@ -1,16 +1,22 @@
+# Instal Dev Tools
+install.packages('devtools')
+install.packages('data.table')
+
 # Install Bibliometrix 
-library(dev.tools)
 devtools::install_github("massimoaria/bibliometrix")
 
 # Import Libraries
 library(data.table)
 library(bibliometrix)
 
-# Set Working Directory
-setwd('C:/Users/Mike/Desktop/KEEN Clinic/Tuesday/Demonstration/Bib')
+# Download Example Bib Files
+download.file("https://s3.wasabisys.com/litbibs/savedrecs.bib", destfile = "s.bib", method="curl")
+download.file("https://s3.wasabisys.com/litbibs/savedrecs%20(1).bib", destfile = "s2.bib", method="curl")
+download.file("https://s3.wasabisys.com/litbibs/savedrecs%20(2).bib", destfile = "s3.bib", method="curl")
+download.file("https://s3.wasabisys.com/litbibs/savedrecs%20(3).bib", destfile = "s4.bib", method="curl")
 
 # ID Bib Files
-file.list <- list.files()
+file.list <- list.files(pattern="*.bib")
 
 # Import Bibtex Files
 bib.df <- convert2df(file.list, format='bibtex')
@@ -23,5 +29,4 @@ summary(object = results, k = 100, pause = FALSE)
 
 # Conceptual Structure
 CS <- conceptualStructure(bib.df,field="ID", method="CA", minDegree=4, k.max=8, stemming=FALSE, labelsize=10, documents=10)
-CS
-
+CS # Show Conceptual Structure
